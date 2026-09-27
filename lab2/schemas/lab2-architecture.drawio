@@ -1,0 +1,151 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0">
+  <diagram id="arch" name="Architecture">
+    <mxGraphModel dx="2751" dy="888" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="base" />
+        <mxCell id="layer" parent="base" />
+        <mxCell id="title" parent="layer" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=20;fontStyle=1;" value="Архитектурная схема Tilda" vertex="1">
+          <mxGeometry height="40" width="420" x="350" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="user" parent="layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=14;" value="Пользователь" vertex="1">
+          <mxGeometry height="70" width="140" x="-80" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="FNculx7YE8f_4QmSOGnI-0" edge="1" parent="layer" source="browser" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="frontend" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="browser" parent="layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=14;" value="Браузер" vertex="1">
+          <mxGeometry height="70" width="150" x="250" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="frontend" parent="layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;" value="Frontend&#xa;(UI, редактор, JS)" vertex="1">
+          <mxGeometry height="70" width="190" x="600" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="api" parent="layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=14;" value="API" vertex="1">
+          <mxGeometry height="70" width="140" x="980" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="backend" parent="layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=14;" value="Backend&#xa;(логика сервиса)" vertex="1">
+          <mxGeometry height="70" width="180" x="1360" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="db" parent="layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=14;" value="Хранилище данных" vertex="1">
+          <mxGeometry height="80" width="180" x="1360" y="420" as="geometry" />
+        </mxCell>
+        <mxCell id="ext" parent="layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=14;" value="Внешние сервисы" vertex="1">
+          <mxGeometry height="80" width="180" x="1170" y="420" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="layer" source="user" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" target="browser" value="действие пользователя">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="layer" source="browser" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" target="frontend" value="HTML/CSS/JS">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="layer" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" value="HTTP GET/POST&#xa;JSON">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="790" y="255" as="sourcePoint" />
+            <mxPoint x="980" y="255" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e4" edge="1" parent="layer" source="api" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" target="backend" value="API-вызов">
+          <mxGeometry relative="1" x="-0.1667" y="-5" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e5" edge="1" parent="layer" source="backend" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" target="db" value="чтение/запись данных">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" edge="1" parent="layer" source="backend" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" target="ext" value="внешние запросы">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1450" y="330" />
+              <mxPoint x="1260" y="330" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e7" edge="1" parent="layer" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" value="HTTP-ответ&#xa;JSON/HTML">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="980" y="283" as="sourcePoint" />
+            <mxPoint x="790" y="283" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e8" edge="1" parent="layer" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" value="обновление UI">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="600" y="275" as="sourcePoint" />
+            <mxPoint x="400" y="275" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e9" edge="1" parent="layer" source="browser" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" target="user" value="визуальный результат">
+          <mxGeometry relative="1" x="0.0526" y="-10" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="150" y="280" />
+              <mxPoint x="150" y="280" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FNculx7YE8f_4QmSOGnI-17" parent="layer" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=20;fontStyle=1;" value="Схема взаимодействия для сценария: добавление блока на страницу" vertex="1">
+          <mxGeometry height="40" width="760" x="1484" y="1076" as="geometry" />
+        </mxCell>
+        <mxCell id="FNculx7YE8f_4QmSOGnI-18" parent="layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=14;" value="Пользователь" vertex="1">
+          <mxGeometry height="70" width="140" x="1230" y="1256" as="geometry" />
+        </mxCell>
+        <mxCell id="FNculx7YE8f_4QmSOGnI-19" parent="layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=14;" value="Браузер" vertex="1">
+          <mxGeometry height="70" width="160" x="1544" y="1256" as="geometry" />
+        </mxCell>
+        <mxCell id="FNculx7YE8f_4QmSOGnI-20" parent="layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;" value="Frontend&#xa;(редактор страницы)" vertex="1">
+          <mxGeometry height="70" width="190" x="1920" y="1256" as="geometry" />
+        </mxCell>
+        <mxCell id="FNculx7YE8f_4QmSOGnI-21" parent="layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=14;" value="API" vertex="1">
+          <mxGeometry height="70" width="150" x="2360" y="1256" as="geometry" />
+        </mxCell>
+        <mxCell id="FNculx7YE8f_4QmSOGnI-22" parent="layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=14;" value="Backend" vertex="1">
+          <mxGeometry height="70" width="180" x="2690" y="1256" as="geometry" />
+        </mxCell>
+        <mxCell id="FNculx7YE8f_4QmSOGnI-23" parent="layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=14;" value="Хранилище данных" vertex="1">
+          <mxGeometry height="80" width="180" x="2690" y="1400" as="geometry" />
+        </mxCell>
+        <mxCell id="FNculx7YE8f_4QmSOGnI-24" edge="1" parent="layer" source="FNculx7YE8f_4QmSOGnI-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" target="FNculx7YE8f_4QmSOGnI-19" value="Нажатие кнопки&#xa;«Добавить блок»">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="FNculx7YE8f_4QmSOGnI-25" edge="1" parent="layer" source="FNculx7YE8f_4QmSOGnI-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" target="FNculx7YE8f_4QmSOGnI-20" value="Событие UI,&#xa;выбор блока">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="FNculx7YE8f_4QmSOGnI-26" edge="1" parent="layer" source="FNculx7YE8f_4QmSOGnI-20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" target="FNculx7YE8f_4QmSOGnI-21" value="HTTP POST&#xa;JSON: project_id, page_id, block_type">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="FNculx7YE8f_4QmSOGnI-27" edge="1" parent="layer" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" value="API-вызов,&#xa;валидация данных">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="2510" y="1281" as="sourcePoint" />
+            <mxPoint x="2690" y="1281" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FNculx7YE8f_4QmSOGnI-28" edge="1" parent="layer" source="FNculx7YE8f_4QmSOGnI-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" target="FNculx7YE8f_4QmSOGnI-23" value="Сохранение структуры страницы">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="FNculx7YE8f_4QmSOGnI-29" edge="1" parent="layer" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" value="HTTP 200/201&#xa;JSON с результатом">
+          <mxGeometry relative="1" x="-0.1111" y="-11" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="2690" y="1331" as="sourcePoint" />
+            <mxPoint x="2510" y="1331" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FNculx7YE8f_4QmSOGnI-30" edge="1" parent="layer" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" value="Обновление UI,&#xa;новый блок на странице">
+          <mxGeometry relative="1" x="-0.12" y="9" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="2360" y="1321" as="sourcePoint" />
+            <mxPoint x="2110" y="1321" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FNculx7YE8f_4QmSOGnI-31" edge="1" parent="layer" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" value="Отображение результата">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1920" y="1311" as="sourcePoint" />
+            <mxPoint x="1704" y="1311" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FNculx7YE8f_4QmSOGnI-32" edge="1" parent="layer" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" value="Пользователь видит&#xa;добавленный блок">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1544" y="1321" as="sourcePoint" />
+            <mxPoint x="1370" y="1321" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
