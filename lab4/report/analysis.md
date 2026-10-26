@@ -19,15 +19,6 @@ SELECT 'customers' AS table_name, COUNT(*) AS rows_count FROM customers UNION AL
 
 **Результат:**
 
-| table_name | rows_count |
-|---|---|
-| customers | 180 |
-| stations | 12 |
-| bicycles | 45 |
-| rentals | 950 |
-| payments | 780 |
-| maintenance | 150 |
-
 ![Шаг 1 — количество записей](../images/step01_counts.png)
 
 **Вывод:** все шесть таблиц доступны, всего 2117 записей.
@@ -55,14 +46,6 @@ SELECT * FROM rentals LIMIT 5;
 
 **Результат:**
 
-| id | customer_id | bicycle_id | rental_days | start_date | status |
-|---|---|---|---|---|---|
-| 1 | 135 | 21 | 8 | 2026-04-01 | completed |
-| 2 | 23 | 17 | 6 | 2026-08-05 | completed |
-| 3 | 152 | 36 | 3 | 2026-09-14 | completed |
-| 4 | 24 | 38 | 6 | 2026-02-26 | completed |
-| 5 | 112 | 21 | 4 | 2026-06-18 | completed |
-
 ![Шаг 2 — просмотр данных](../images/step02_preview.png)
 
 **Шаг 2 — структура таблицы.** Просмотр полей и типов данных таблицы `rentals`.
@@ -72,15 +55,6 @@ PRAGMA table_info(rentals);
 ```
 
 **Результат:**
-
-| cid | name | type | notnull | dflt_value | pk |
-|---|---|---|---|---|---|
-| 0 | id | INTEGER | 0 | NULL | 1 |
-| 1 | customer_id | INTEGER | 1 | NULL | 0 |
-| 2 | bicycle_id | INTEGER | 1 | NULL | 0 |
-| 3 | rental_days | INTEGER | 1 | NULL | 0 |
-| 4 | start_date | TEXT | 1 | NULL | 0 |
-| 5 | status | TEXT | 1 | NULL | 0 |
 
 ![Шаг 2 — структура таблицы](../images/step02_schema.png)
 
@@ -104,19 +78,6 @@ SELECT id, model, category, daily_price FROM bicycles WHERE daily_price >= 1000 
 
 **Результат:**
 
-| id | model | category | daily_price |
-|---|---|---|---|
-| 31 | Urban 100 4 | Городской | 1700 |
-| 8 | Trail Mini 1 | Горный | 1650 |
-| 1 | Urban 100 1 | Городской | 1650 |
-| 11 | Urban 100 2 | Городской | 1650 |
-| 21 | Urban 100 3 | Городской | 1600 |
-| 2 | City Lite 1 | Городской | 1500 |
-| 6 | Rock Rider 1 | Горный | 1500 |
-| 36 | Rock Rider 4 | Горный | 1500 |
-| 44 | Trail Pro 5 | Горный | 1500 |
-| 7 | Commuter 1 | Городской | 1400 |
-
 ![Шаг 3 — фильтрация по тарифу](../images/step03_filter.png)
 
 **Шаг 3 — сортировка клиентов.** Выводим клиентов из Казани по алфавиту.
@@ -126,19 +87,6 @@ SELECT id, full_name, city, registered_at FROM customers WHERE city = 'Каза�
 ```
 
 **Результат:**
-
-| id | full_name | city | registered_at |
-|---|---|---|---|
-| 161 | Алексей Зайцев | Казань | 2025-01-07 |
-| 1 | Алексей Иванов | Казань | 2025-04-22 |
-| 141 | Алексей Котова | Казань | 2025-06-15 |
-| 81 | Алексей Орлова | Казань | 2025-08-23 |
-| 176 | Алина Зайцев | Казань | 2025-08-25 |
-| 96 | Алина Орлова | Казань | 2025-07-14 |
-| 85 | Анна Орлова | Казань | 2025-01-05 |
-| 105 | Анна Фомин | Казань | 2025-12-01 |
-| 35 | Артём Белова | Казань | 2025-07-03 |
-| 50 | Вера Левин | Казань | 2025-03-11 |
 
 ![Шаг 3 — сортировка клиентов](../images/step03_sort.png)
 
@@ -154,10 +102,6 @@ SELECT COUNT(*) AS total_rentals FROM rentals;
 
 **Результат:**
 
-| total_rentals |
-|---|
-| 950 |
-
 ![Шаг 4 — подсчёт аренд](../images/step04_count.png)
 
 **Шаг 4 — агрегатные функции.** Рассчитываем минимальный, максимальный, средний и суммарный дневной тариф.
@@ -168,10 +112,6 @@ SELECT MIN(daily_price) AS min_price, MAX(daily_price) AS max_price, ROUND(AVG(d
 
 **Результат:**
 
-| min_price | max_price | avg_price | sum_prices |
-|---|---|---|---|
-| 550 | 1700 | 1077.78 | 48500 |
-
 ![Шаг 4 — агрегатные функции](../images/step04_aggregates.png)
 
 **Шаг 4 — GROUP BY и HAVING.** Группируем аренды по статусу и оставляем статусы, встречающиеся более 100 раз.
@@ -181,11 +121,6 @@ SELECT status, COUNT(*) AS rentals_count FROM rentals GROUP BY status HAVING COU
 ```
 
 **Результат:**
-
-| status | rentals_count |
-|---|---|
-| completed | 780 |
-| active | 120 |
 
 ![Шаг 4 — GROUP BY и HAVING](../images/step04_having.png)
 
@@ -201,19 +136,6 @@ SELECT r.id AS rental_id, c.full_name, r.start_date, r.status FROM rentals r INN
 
 **Результат:**
 
-| rental_id | full_name | start_date | status |
-|---|---|---|---|
-| 1 | Артём Соколова | 2026-04-01 | completed |
-| 2 | Игорь Белова | 2026-08-05 | completed |
-| 3 | Никита Котова | 2026-09-14 | completed |
-| 4 | Елена Белова | 2026-02-26 | completed |
-| 5 | Никита Фомин | 2026-06-18 | completed |
-| 6 | Ольга Котова | 2026-01-25 | completed |
-| 7 | Алексей Котова | 2026-04-10 | completed |
-| 8 | Вера Иванов | 2026-04-01 | completed |
-| 9 | Денис Иванов | 2026-02-14 | completed |
-| 10 | Роман Иванов | 2026-07-18 | completed |
-
 ![Шаг 5 — аренды и клиенты](../images/step05_join_customers.png)
 
 **Шаг 5 — велосипеды и станции.** Используем `INNER JOIN`, чтобы показать первые 10 велосипедов и пункты проката.
@@ -224,19 +146,6 @@ SELECT b.id, b.model, s.station_name, s.city FROM bicycles b INNER JOIN stations
 
 **Результат:**
 
-| id | model | station_name | city |
-|---|---|---|---|
-| 1 | Urban 100 1 | Пункт проката №9 | Пермь |
-| 2 | City Lite 1 | Пункт проката №4 | Пермь |
-| 3 | Speed X 1 | Пункт проката №7 | Самара |
-| 4 | Trail Pro 1 | Пункт проката №12 | Самара |
-| 5 | Road One 1 | Пункт проката №11 | Казань |
-| 6 | Rock Rider 1 | Пункт проката №1 | Казань |
-| 7 | Commuter 1 | Пункт проката №4 | Пермь |
-| 8 | Trail Mini 1 | Пункт проката №1 | Казань |
-| 9 | Cross 200 1 | Пункт проката №7 | Самара |
-| 10 | Metro Bike 1 | Пункт проката №12 | Самара |
-
 ![Шаг 5 — велосипеды и станции](../images/step05_join_stations.png)
 
 **Шаг 5 — все станции и велосипеды.** Используем `LEFT JOIN`, чтобы сохранить в результате все пункты проката, включая пункты без велосипедов.
@@ -246,23 +155,6 @@ SELECT s.id, s.station_name, b.model FROM stations s LEFT JOIN bicycles b ON b.s
 ```
 
 **Результат:**
-
-| id | station_name | model |
-|---|---|---|
-| 1 | Пункт проката №1 | Rock Rider 1 |
-| 1 | Пункт проката №1 | Trail Mini 1 |
-| 1 | Пункт проката №1 | Trail Mini 4 |
-| 1 | Пункт проката №1 | Urban 100 5 |
-| 2 | Пункт проката №2 | Trail Mini 2 |
-| 2 | Пункт проката №2 | Metro Bike 2 |
-| 2 | Пункт проката №2 | Road One 3 |
-| 2 | Пункт проката №2 | Urban 100 4 |
-| 3 | Пункт проката №3 | NULL |
-| 4 | Пункт проката №4 | City Lite 1 |
-| 4 | Пункт проката №4 | Commuter 1 |
-| 4 | Пункт проката №4 | Cross 200 2 |
-
-*Показаны первые 12 строк результата.*
 
 ![Шаг 5 — все станции и велосипеды](../images/step05_left_join.png)
 
@@ -278,10 +170,6 @@ SELECT COUNT(*) AS invalid_rental_days FROM rentals WHERE rental_days <= 0 OR re
 
 **Результат:**
 
-| invalid_rental_days |
-|---|
-| 0 |
-
 ![Шаг 6 — проверка длительности аренды](../images/step06_invalid.png)
 
 **Шаг 6 — проверка связей платежей.** Проверяем, нет ли платежей, ссылающихся на несуществующую аренду.
@@ -291,10 +179,6 @@ SELECT COUNT(*) AS orphan_payments FROM payments p LEFT JOIN rentals r ON p.rent
 ```
 
 **Результат:**
-
-| orphan_payments |
-|---|
-| 0 |
 
 ![Шаг 6 — проверка связей платежей](../images/step06_orphans.png)
 
@@ -314,13 +198,6 @@ SELECT b.category, COUNT(*) AS completed_rentals, SUM(p.amount) AS revenue_rub, 
 
 **Результат:**
 
-| category | completed_rentals | revenue_rub | avg_payment_rub |
-|---|---|---|---|
-| Городской | 309 | 1601550 | 5183.01 |
-| Горный | 231 | 1118500 | 4841.99 |
-| Шоссейный | 165 | 605600 | 3670.3 |
-| Гибридный | 75 | 308500 | 4113.33 |
-
 ![Шаг 7 — аналитика по категориям](../images/step07_categories.png)
 
 **Шаг 7 — аналитика по станциям.** Сравниваем пункты проката по сумме платежей.
@@ -330,19 +207,6 @@ SELECT s.station_name, COUNT(*) AS paid_rentals, SUM(p.amount) AS revenue_rub FR
 ```
 
 **Результат:**
-
-| station_name | paid_rentals | revenue_rub |
-|---|---|---|
-| Пункт проката №7 | 102 | 507600 |
-| Пункт проката №11 | 99 | 461000 |
-| Пункт проката №4 | 85 | 458300 |
-| Пункт проката №1 | 85 | 415200 |
-| Пункт проката №9 | 70 | 370850 |
-| Пункт проката №2 | 74 | 350600 |
-| Пункт проката №6 | 92 | 276900 |
-| Пункт проката №12 | 57 | 272800 |
-| Пункт проката №5 | 53 | 253750 |
-| Пункт проката №8 | 53 | 229550 |
 
 ![Шаг 7 — аналитика по станциям](../images/step07_station_revenue.png)
 
@@ -355,12 +219,6 @@ SELECT b.id, b.model, b.category FROM bicycles b LEFT JOIN rentals r ON b.id=r.b
 ```
 
 **Результат:**
-
-| id | model | category |
-|---|---|---|
-| 43 | Speed X 5 | Шоссейный |
-| 44 | Trail Pro 5 | Горный |
-| 45 | Road One 5 | Шоссейный |
 
 ![Шаг 7 — неиспользуемые велосипеды](../images/step07_unused.png)
 
