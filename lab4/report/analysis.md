@@ -11,7 +11,7 @@
 
 В SandboxSQL загружена SQLite-база. Выполнена проверка числа строк во всех шести таблицах.
 
-**Шаг 1 — количество записей.** 
+**Количество записей.** 
 
 ```sql
 SELECT 'customers' AS table_name, COUNT(*) AS rows_count FROM customers UNION ALL SELECT 'stations', COUNT(*) FROM stations UNION ALL SELECT 'bicycles', COUNT(*) FROM bicycles UNION ALL SELECT 'rentals', COUNT(*) FROM rentals UNION ALL SELECT 'payments', COUNT(*) FROM payments UNION ALL SELECT 'maintenance', COUNT(*) FROM maintenance;
@@ -38,7 +38,7 @@ SELECT 'customers' AS table_name, COUNT(*) AS rows_count FROM customers UNION AL
 
 **Связи:** `bicycles.station_id → stations.id`; `rentals.customer_id → customers.id`; `rentals.bicycle_id → bicycles.id`; `payments.rental_id → rentals.id`; `maintenance.bicycle_id → bicycles.id`. В каждой таблице `id` — первичный ключ. Для `payments.rental_id` задана уникальность: одной аренде соответствует максимум один платёж.
 
-**Шаг 2 — просмотр данных.** Просмотр первых пяти аренд.
+**Просмотр данных.** Просмотр первых пяти аренд.
 
 ```sql
 SELECT * FROM rentals LIMIT 5;
@@ -48,7 +48,7 @@ SELECT * FROM rentals LIMIT 5;
 
 ![Шаг 2 — просмотр данных](../images/step02_preview.png)
 
-**Шаг 2 — структура таблицы.** Просмотр полей и типов данных таблицы `rentals`.
+**Структура таблицы.** Просмотр полей и типов данных таблицы `rentals`.
 
 ```sql
 PRAGMA table_info(rentals);
@@ -70,7 +70,7 @@ PRAGMA table_info(rentals);
 
 ## Шаг 3. Фильтрация и сортировка
 
-**Шаг 3 — фильтрация по тарифу.** Отбираем велосипеды с дневным тарифом не ниже 1000 рублей.
+**Фильтрация по тарифу.** Отбираем велосипеды с дн��вным тарифом не ниже 1000 рублей.
 
 ```sql
 SELECT id, model, category, daily_price FROM bicycles WHERE daily_price >= 1000 ORDER BY daily_price DESC, model LIMIT 10;
@@ -80,7 +80,7 @@ SELECT id, model, category, daily_price FROM bicycles WHERE daily_price >= 1000 
 
 ![Шаг 3 — фильтрация по тарифу](../images/step03_filter.png)
 
-**Шаг 3 — сортировка клиентов.** Выводим клиентов из Казани по алфавиту.
+**Сортировка клиентов.** Выводим клиентов из Казани по алфавиту.
 
 ```sql
 SELECT id, full_name, city, registered_at FROM customers WHERE city = 'Казань' ORDER BY full_name LIMIT 10;
@@ -94,7 +94,7 @@ SELECT id, full_name, city, registered_at FROM customers WHERE city = 'Каза�
 
 ## Шаг 4. Агрегирование и группировка
 
-**Шаг 4 — подсчёт аренд.** Определяем общее число аренд.
+**Подсчёт аренд.** Определяем общее число аренд.
 
 ```sql
 SELECT COUNT(*) AS total_rentals FROM rentals;
@@ -104,7 +104,7 @@ SELECT COUNT(*) AS total_rentals FROM rentals;
 
 ![Шаг 4 — подсчёт аренд](../images/step04_count.png)
 
-**Шаг 4 — агрегатные функции.** Рассчитываем минимальный, максимальный, средний и суммарный дневной тариф.
+**Агрегатные функции.** Рассчитываем минимальный, максимальный, средний и суммарный дневной тариф.
 
 ```sql
 SELECT MIN(daily_price) AS min_price, MAX(daily_price) AS max_price, ROUND(AVG(daily_price),2) AS avg_price, SUM(daily_price) AS sum_prices FROM bicycles;
@@ -114,7 +114,7 @@ SELECT MIN(daily_price) AS min_price, MAX(daily_price) AS max_price, ROUND(AVG(d
 
 ![Шаг 4 — агрегатные функции](../images/step04_aggregates.png)
 
-**Шаг 4 — GROUP BY и HAVING.** Группируем аренды по статусу и оставляем статусы, встречающиеся более 100 раз.
+**GROUP BY и HAVING.** Группируем аренды по статусу и оставляем статусы, встречающиеся более 100 раз.
 
 ```sql
 SELECT status, COUNT(*) AS rentals_count FROM rentals GROUP BY status HAVING COUNT(*) > 100 ORDER BY rentals_count DESC;
@@ -124,11 +124,11 @@ SELECT status, COUNT(*) AS rentals_count FROM rentals GROUP BY status HAVING COU
 
 ![Шаг 4 — GROUP BY и HAVING](../images/step04_having.png)
 
-**Вывод:** в базе 950 аренд. `HAVING` отбирает группы после агрегирования; условие применяется к `COUNT(*)`.
+**Вывод:** в базе 900 аренд. `HAVING` отбирает группы после агрегирования; условие применяется к `COUNT(*)`.
 
 ## Шаг 5. Объединение связанных таблиц
 
-**Шаг 5 — аренды и клиенты.** Используем `INNER JOIN`, чтобы показать первые 10 аренд вместе с именами клиентов.
+**Аренды и клиенты.** Используем `INNER JOIN`, чтобы показать первые 10 аренд вместе с именами клиентов.
 
 ```sql
 SELECT r.id AS rental_id, c.full_name, r.start_date, r.status FROM rentals r INNER JOIN customers c ON r.customer_id=c.id ORDER BY r.id LIMIT 10;
@@ -138,7 +138,7 @@ SELECT r.id AS rental_id, c.full_name, r.start_date, r.status FROM rentals r INN
 
 ![Шаг 5 — аренды и клиенты](../images/step05_join_customers.png)
 
-**Шаг 5 — велосипеды и станции.** Используем `INNER JOIN`, чтобы показать первые 10 велосипедов и пункты проката.
+**Велосипеды и станции.** Используем `INNER JOIN`, чтобы показать первые 10 велосипедов и пункты проката.
 
 ```sql
 SELECT b.id, b.model, s.station_name, s.city FROM bicycles b INNER JOIN stations s ON b.station_id=s.id ORDER BY b.id LIMIT 10;
@@ -148,7 +148,7 @@ SELECT b.id, b.model, s.station_name, s.city FROM bicycles b INNER JOIN stations
 
 ![Шаг 5 — велосипеды и станции](../images/step05_join_stations.png)
 
-**Шаг 5 — все станции и велосипеды.** Используем `LEFT JOIN`, чтобы сохранить в результате все пункты проката, включая пункты без велосипедов.
+**Все станции и велосипеды.** Используем `LEFT JOIN`, чтобы сохранить в результате все пункты проката, включая пункты без велосипедов.
 
 ```sql
 SELECT s.id, s.station_name, b.model FROM stations s LEFT JOIN bicycles b ON b.station_id=s.id ORDER BY s.id,b.id;
@@ -162,7 +162,7 @@ SELECT s.id, s.station_name, b.model FROM stations s LEFT JOIN bicycles b ON b.s
 
 ## Шаг 6. Проверка корректности данных
 
-**Шаг 6 — проверка длительности аренды.** Проверяем, нет ли аренд с нулевой, отрицательной или отсутствующей длительностью.
+**Проверка длительности аренды.** Проверяем, нет ли аренд с нулевой, отрицательной или отсутствующей длительностью.
 
 ```sql
 SELECT COUNT(*) AS invalid_rental_days FROM rentals WHERE rental_days <= 0 OR rental_days IS NULL;
@@ -172,7 +172,7 @@ SELECT COUNT(*) AS invalid_rental_days FROM rentals WHERE rental_days <= 0 OR re
 
 ![Шаг 6 — проверка длительности аренды](../images/step06_invalid.png)
 
-**Шаг 6 — проверка связей платежей.** Проверяем, нет ли платежей, ссылающихся на несуществующую аренду.
+**Проверка связей платежей.** Проверяем, нет ли платежей, ссылающихся на несуществующую аренду.
 
 ```sql
 SELECT COUNT(*) AS orphan_payments FROM payments p LEFT JOIN rentals r ON p.rental_id=r.id WHERE r.id IS NULL;
@@ -190,7 +190,7 @@ SELECT COUNT(*) AS orphan_payments FROM payments p LEFT JOIN rentals r ON p.rent
 
 **Метод:** учитываем только аренды, у которых имеется запись в `payments`; выручка рассчитывается как `SUM(payments.amount)`. Незавершённые и отменённые аренды без платежа не включаются. Расходы на обслуживание не вычитаются.
 
-**Шаг 7 — аналитика по категориям.** Группируем оплаченные аренды по категориям велосипедов.
+**Аналитика по категориям.** Группируем оплаченные аренды по категориям велосипедов.
 
 ```sql
 SELECT b.category, COUNT(*) AS completed_rentals, SUM(p.amount) AS revenue_rub, ROUND(AVG(p.amount),2) AS avg_payment_rub FROM payments p INNER JOIN rentals r ON p.rental_id=r.id INNER JOIN bicycles b ON r.bicycle_id=b.id GROUP BY b.category ORDER BY revenue_rub DESC;
@@ -200,7 +200,7 @@ SELECT b.category, COUNT(*) AS completed_rentals, SUM(p.amount) AS revenue_rub, 
 
 ![Шаг 7 — аналитика по категориям](../images/step07_categories.png)
 
-**Шаг 7 — аналитика по станциям.** Сравниваем пункты проката по сумме платежей.
+**Аналитика по станциям.** Сравниваем пункты проката по сумме платежей.
 
 ```sql
 SELECT s.station_name, COUNT(*) AS paid_rentals, SUM(p.amount) AS revenue_rub FROM payments p INNER JOIN rentals r ON p.rental_id=r.id INNER JOIN bicycles b ON r.bicycle_id=b.id INNER JOIN stations s ON b.station_id=s.id GROUP BY s.id,s.station_name ORDER BY revenue_rub DESC LIMIT 10;
@@ -212,7 +212,7 @@ SELECT s.station_name, COUNT(*) AS paid_rentals, SUM(p.amount) AS revenue_rub FR
 
 **Дополнительная проверка — велосипеды без аренд:**
 
-**Шаг 7 — неиспользуемые велосипеды.** Используем `LEFT JOIN` для поиска велосипедов без единой записи в `rentals`.
+**Неиспользуемые велосипеды.** Используем `LEFT JOIN` для поиска велосипедов без единой записи в `rentals`.
 
 ```sql
 SELECT b.id, b.model, b.category FROM bicycles b LEFT JOIN rentals r ON b.id=r.bicycle_id WHERE r.id IS NULL ORDER BY b.id;
