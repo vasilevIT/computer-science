@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="900" viewBox="0 0 1500 900"><rect width="1500" height="900" fill="white"/><defs><marker id="arr" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L9,3 L0,6" fill="none" stroke="#526f88" stroke-width="2"/></marker></defs><text x="55" y="75" font-family="sans-serif" font-size="35" font-weight="bold">Логическая схема журнала на Ghost</text>
+<rect x="65" y="170" width="315" height="100" rx="18" fill="#f3f6fa" stroke="#71859a" stroke-width="3"/><text x="222.5" y="228.0" font-family="sans-serif" font-size="22" font-weight="bold" text-anchor="middle">Читатель</text>
+<rect x="475" y="170" width="435" height="100" rx="18" fill="#f3f6fa" stroke="#71859a" stroke-width="3"/><text x="692.5" y="228.0" font-family="sans-serif" font-size="22" font-weight="bold" text-anchor="middle">Публичный сайт журнала</text>
+<rect x="1010" y="110" width="420" height="90" rx="18" fill="#f3f6fa" stroke="#71859a" stroke-width="3"/><text x="1220.0" y="163.0" font-family="sans-serif" font-size="22" font-weight="bold" text-anchor="middle">Список статей</text>
+<rect x="1010" y="250" width="420" height="90" rx="18" fill="#f3f6fa" stroke="#71859a" stroke-width="3"/><text x="1220.0" y="303.0" font-family="sans-serif" font-size="22" font-weight="bold" text-anchor="middle">Страница статьи</text>
+<rect x="475" y="450" width="435" height="100" rx="18" fill="#f3f6fa" stroke="#71859a" stroke-width="3"/><text x="692.5" y="508.0" font-family="sans-serif" font-size="22" font-weight="bold" text-anchor="middle">Контент Ghost</text>
+<rect x="65" y="610" width="315" height="100" rx="18" fill="#f3f6fa" stroke="#71859a" stroke-width="3"/><text x="222.5" y="668.0" font-family="sans-serif" font-size="22" font-weight="bold" text-anchor="middle">Редактор</text>
+<rect x="475" y="610" width="435" height="100" rx="18" fill="#f3f6fa" stroke="#71859a" stroke-width="3"/><text x="692.5" y="668.0" font-family="sans-serif" font-size="22" font-weight="bold" text-anchor="middle">Панель управления</text>
+<rect x="1010" y="460" width="420" height="90" rx="18" fill="#f3f6fa" stroke="#71859a" stroke-width="3"/><text x="1220.0" y="513.0" font-family="sans-serif" font-size="22" font-weight="bold" text-anchor="middle">Событие публикации</text>
+<rect x="1010" y="640" width="420" height="90" rx="18" fill="#f3f6fa" stroke="#71859a" stroke-width="3"/><text x="1220.0" y="693.0" font-family="sans-serif" font-size="22" font-weight="bold" text-anchor="middle">Внешний обработчик</text>
+<line x1="380" y1="220" x2="475" y2="220" stroke="#526f88" stroke-width="5" marker-end="url(#arr)"/>
+<line x1="910" y1="200" x2="1010" y2="155" stroke="#526f88" stroke-width="5" marker-end="url(#arr)"/>
+<line x1="910" y1="240" x2="1010" y2="295" stroke="#526f88" stroke-width="5" marker-end="url(#arr)"/>
+<line x1="690" y1="270" x2="690" y2="450" stroke="#526f88" stroke-width="5" marker-end="url(#arr)"/>
+<line x1="1210" y1="340" x2="1210" y2="460" stroke="#526f88" stroke-width="5" marker-end="url(#arr)"/>
+<line x1="380" y1="660" x2="475" y2="660" stroke="#526f88" stroke-width="5" marker-end="url(#arr)"/>
+<line x1="690" y1="610" x2="690" y2="550" stroke="#526f88" stroke-width="5" marker-end="url(#arr)"/>
+<line x1="1210" y1="550" x2="1210" y2="640" stroke="#526f88" stroke-width="5" marker-end="url(#arr)"/>
+<text x="55" y="850" font-family="sans-serif" font-size="21">Учебная модель. Внутренняя инфраструктура Ghost не показана.</text></svg>
